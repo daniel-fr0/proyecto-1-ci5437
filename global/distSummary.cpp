@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
         // get current distance from goal; since operator costs are
         // non-negative this distance is monotonically increasing
         if( open.CurrentPriority() > d ) {
-            printf("%"PRId64" states at distance %d\n", numAtD, d);
+            printf("%" PRId64 " states at distance %d\n", numAtD, d);
             d = open.CurrentPriority();
             numAtD = 0;
         }
@@ -72,9 +72,9 @@ int main(int argc, char **argv) {
     
     // print last level and total states
     if( numAtD > 0 ) {
-        printf("%"PRId64" states at distance %d\n", numAtD, d);
+        printf("%" PRId64 " states at distance %d\n", numAtD, d);
     }
-    printf("%"PRIu64" states in total.\n", totalNodes);
+    printf("%" PRIu64 " states in total.\n", totalNodes);
     
     // write the state map to a file
     if( argc >= 2 ) {
