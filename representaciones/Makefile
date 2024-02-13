@@ -27,10 +27,14 @@ psvn2c_abstraction.c:
 	$(CXX) $(OPT) ../global/distSummary.cpp -include $< -o $@
 	rm -f $*.c
 
+%.distSummaryPP: %.c ../global/distSummaryPP.cpp
+	$(CXX) $(OPT) ../global/distSummaryPP.cpp -include $< -o $@
+	rm -f $*.c
+
 %.dist: %.c ../global/dist.cpp
 	$(CXX) $(OPT) ../global/dist.cpp -include $< -o $@
 	rm -f $*.c
 	
 .PHONY: clean
 clean:
-	rm -fr *.succ psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *.dSYM *.o *~
+	rm -fr *.succ psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *.dSYM *.o *~ *.distSummary *.distSummaryPP *.dist
