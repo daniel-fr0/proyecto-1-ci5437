@@ -1,3 +1,4 @@
 *.dist
 *.distSummary
+*.distSummaryPP
 psvn2c

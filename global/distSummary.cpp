@@ -44,12 +44,6 @@ int main(int argc, char **argv) {
         state = open.Top();
         open.Pop();
         
-        // check if we already expanded this state.
-        // (entries on the open list are not deleted if a cheaper path to a state is found)
-        const int *best_dist = state_map_get(map, &state);
-        assert(best_dist != NULL);
-        if( *best_dist < d ) continue;
-        
         numAtD++;
         totalNodes++;
 
@@ -58,15 +52,10 @@ int main(int argc, char **argv) {
         while( (ruleid = next_ruleid(&iter) ) >= 0 ) {
             apply_bwd_rule(ruleid, &state, &child);
             const int child_d = d + get_bwd_rule_cost(ruleid);
-
-            // check if either this child has not been seen yet or if
-            // there is a new cheaper way to get to this child.
-            const int *old_child_d = state_map_get(map, &child);
-            if( (old_child_d == NULL) || (*old_child_d > child_d) ) {
-                // add to open with the new distance
-                state_map_add(map, &child, child_d);
-                open.Add(child_d, child_d, child);
-            }
+            
+            // add to open with the new distance
+            state_map_add(map, &child, child_d);
+            open.Add(child_d, child_d, child);
         }
     }
     
