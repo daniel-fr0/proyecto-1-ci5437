@@ -3,5 +3,5 @@
 *.distSummaryPP
 psvn2c
 abstractor
-.abst
-.pdb
+*.abst
+*.pdb

@@ -22,3 +22,6 @@ project 42
 project 44
 project 46
 project 48
+map COLOUR ORANGE YELLOW
+map COLOUR RED YELLOW
+map COLOUR WHITE YELLOW
