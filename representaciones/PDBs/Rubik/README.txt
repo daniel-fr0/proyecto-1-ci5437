@@ -20,8 +20,5 @@ quedan 20 cubies:
 
 Se dividen en 2 grupos: 8 de las esquinas y 12 de los bordes
 
-Para simplificar el problema, se van a usar 3 pdbs para las esquinas y 3 pdbs para los bordes
-
-Segun las variables, cada cuadro correspondiente a:
-- esquinas: son numeros pares
-- bordes: son numeros impares
+Para reducir el problema mas todavia, estos grupos se subdividen en 2 grupos mas:
+Uno resuelve la mitad de los colores del cubo, y el otro la otra mitad
