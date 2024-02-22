@@ -21,10 +21,6 @@ int main(int argc, char **argv) {
     state_map_t *map = new_state_map(); // contains the cost-to-goal for all states that have been generated
     FILE *file; // the final state_map is written to this file if it is provided (command line argument)
 
-    // to use the PSVN API for partial pruning of duplicates
-    int hist;
-    hist = init_history;
-
     // add goal states
     first_goal_state(&state, &d);
     do {
@@ -60,9 +56,6 @@ int main(int argc, char **argv) {
         // look at all predecessors of the state
         init_bwd_iter(&iter, &state);
         while( (ruleid = next_ruleid(&iter) ) >= 0 ) {
-            if (!bwd_rule_valid_for_history(hist, ruleid)) continue;
-            next_bwd_history(hist, ruleid);
-
             apply_bwd_rule(ruleid, &state, &child);
             const int child_d = d + get_bwd_rule_cost(ruleid);
 
