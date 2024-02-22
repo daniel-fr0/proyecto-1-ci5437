@@ -2,3 +2,6 @@
 *.distSummary
 *.distSummaryPP
 psvn2c
+abstractor
+.abst
+.pdb
