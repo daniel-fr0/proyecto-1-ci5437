@@ -63,7 +63,7 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: bordesW.pdb bordesY.pdb esquinasW.pdb esquinasY.pdb
+pdb: bordesW.pdb bordesY.pdb ESQUINAS.pdb
 
 bordesW.pdb:
 	make RubikCube3/bordesW.pdb
@@ -81,6 +81,10 @@ esquinasY.pdb:
 	make RubikCube3/esquinasY.pdb
 	rm -f abstractor esquinasY.psvn esquinasY.distSummaryPP
 
+ESQUINAS.pdb:
+	make RubikCube3/ESQUINAS.pdb
+	rm -f abstractor ESQUINAS.psvn ESQUINAS.distSummaryPP
+
 %.dist_pdb: %.c ../../../global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) ../../../global/dist_pdb.cpp -include $< -o $@
@@ -95,3 +99,6 @@ esquinasY.pdb:
 clean:
 	rm -fr *.A *.succ *.dist *.distSummary *.distSummaryPP *.generator *.dist_pdb psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c abstractor *.dSYM *.o *~ *.c
 	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+
+clean_pdb:
+	rm -fr *.pdb *.abst
