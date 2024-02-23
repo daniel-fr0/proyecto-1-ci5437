@@ -36,14 +36,20 @@ unsigned heuristica(state_t estado) {
 	abstract_state(borY_abst, &estado, &borY);
 
 	// Se obtienen las distancias a los estados abstractos
-	const int esqW_dist = *state_map_get(esqW_map, &esqW);
-	const int esqY_dist = *state_map_get(esqY_map, &esqY);
-	const int borW_dist = *state_map_get(borW_map, &borW);
-	const int borY_dist = *state_map_get(borY_map, &borY);
+	const int *esqW_dist = state_map_get(esqW_map, &esqW);
+	const int *esqY_dist = state_map_get(esqY_map, &esqY);
+	const int *borW_dist = state_map_get(borW_map, &borW);
+	const int *borY_dist = state_map_get(borY_map, &borY);
+
+	// Estas distancias no deberian ser nulas
+	if (esqW_dist == NULL || esqY_dist == NULL || borW_dist == NULL || borY_dist == NULL) {
+		std::cerr << "Error: No se encontro la distancia en el PDB" << std::endl;
+		exit(1);
+	}
 
 	// Se retorna el maximo de las distancias
 	return std::max(
-		std::max(esqW_dist, esqY_dist), 
-		std::max(borW_dist, borY_dist)
+		std::max(*esqW_dist, *esqY_dist),
+		std::max(*borW_dist, *borY_dist)
 	);
 }
