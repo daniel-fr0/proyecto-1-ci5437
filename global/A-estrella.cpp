@@ -2,10 +2,14 @@
 #include<vector>
 #include"priority_queue.hpp"
 #include<climits>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <iterator>
 
 using namespace std;
 
-int a_estrella(state_t *init, unsigned (*heuristica) (state_t)){
+int a_estrella(state_t *init){
     PriorityQueue<state_t> q;
     state_t estado, hijo;
     int d, ruleid;
@@ -68,4 +72,43 @@ int a_estrella(state_t *init, unsigned (*heuristica) (state_t)){
         }
     }
     return 0; // Sin camino
+}
+
+
+int main(int argc, char const *argv[]) {
+    if (argc < 2){
+        cout<<"Uso: "<<argv[0]<<" <archivo con estado inicial>"<<endl;
+        return 1;
+    }
+
+    // Abrimos el archivo con el estado inicial
+    ifstream file(argv[1]);
+
+    if (!file.is_open()) {
+        cout << "Error al abrir el archivo" << endl;
+        return 1;
+    }
+
+    // Se lee el archivo en un string
+    string contents((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+
+    // Se copia el string en un buffer de char*
+    char* buffer = new char[contents.length() + 1];
+    std::copy(contents.begin(), contents.end(), buffer);
+    buffer[contents.length()] = '\0'; // Caracter nulo al final del buffer
+
+    file.close();
+
+    state_t init;
+    read_state(buffer, &init);
+
+    // Liberamos el buffer
+    delete[] buffer;
+
+    cout << "Construyendo heuristica..." << endl;
+    init_heuristica();
+    cout << "Heuristica del estado inicial: " << heuristica(init) << endl;
+    a_estrella(&init);
+
+    return 0;
 }
