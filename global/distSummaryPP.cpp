@@ -53,9 +53,15 @@ int main(int argc, char **argv) {
         numAtD++;
         totalNodes++;
 
+        int hist;
+        hist = init_history;
+
         // look at all predecessors of the state
         init_bwd_iter(&iter, &state);
         while( (ruleid = next_ruleid(&iter) ) >= 0 ) {
+            if (!bwd_rule_valid_for_history(hist,ruleid)) continue;
+            next_bwd_history(hist,ruleid);
+
             apply_bwd_rule(ruleid, &state, &child);
             const int child_d = d + get_bwd_rule_cost(ruleid);
 
