@@ -81,6 +81,10 @@ esquinasY.pdb:
 	make RubikCube3/esquinasY.pdb
 	rm -f abstractor esquinasY.psvn esquinasY.distSummaryPP
 
+ESQUINAS.pdb:
+	make RubikCube3/ESQUINAS.pdb
+	rm -f abstractor ESQUINAS.psvn ESQUINAS.distSummaryPP
+
 %.dist_pdb: %.c ../../../global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) ../../../global/dist_pdb.cpp -include $< -o $@
