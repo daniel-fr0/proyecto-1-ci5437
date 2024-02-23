@@ -12,42 +12,40 @@ using namespace std;
 int a_estrella(state_t *init){
     PriorityQueue<state_t> q;
     state_t estado, hijo;
-    int d, ruleid;
+    int h, g, ruleid;
     ruleid_iterator_t iter;
     state_map_t *map = new_state_map();
     // Agrega el estado inicial a el state map y a la cola de prioridad 
     state_map_add(map, init, 0);
     q.Add(heuristica(*init), 0, *init);
-    // q.Add(0, 0, *init);
-    int test = 5000;  // Esto es solo para ver los primeros estados y ver como avanza,
-                      // Se puede quitar esto y la condicion "test != 0" del while
-                      // una vez funcione.
+    
     // Buscamos el estado objetivo hasta que la cola este vacia
-    while( !q.Empty() && test != 0) {
-        test--;
+    while( !q.Empty()) {
         // Tomamos el estado con la prioridad mas alta
-        d = q.CurrentPriority();
-        
-        cout<<d<<endl;
-        printf("metiste: ");
-        print_state(stdout,&estado);
-        printf("\n");
-
         estado = q.Top();
+
+        cout << "Estado actual: " << endl;
+        print_state(stdout, &estado);
+        cout << endl;
+
+        // Tomamos el costo del estado con la prioridad mas alta
+        g = q.TopG();
+
         q.Pop();
 
         // Pasamos al siguiente elemento del while si el mejor costo conocido
         // es menor que el costo actual
-        const int *best_dist = state_map_get(map,&estado);
-        if(*best_dist < d){
+        const int *best_g = state_map_get(map,&estado);
+        cout << "Best g = " << *best_g << endl;
+        if(*best_g < g){
             continue;
         }
         // Actualizamos el costo del estado actual en el mapa
-        state_map_add(map, &estado, d);
+        state_map_add(map, &estado, g);
 
         // Si el estado actual es el objetivo, retornamos el costo para alcanzarlo
         if (is_goal(&estado)){
-            return d;
+            return g;
         }
 
         // Iteramos por las posibles reglas que pueden ser aplicadas a el estado actual
@@ -55,23 +53,23 @@ int a_estrella(state_t *init){
         while(( ruleid = next_ruleid(&iter)) >= 0 ) {
             // Aplicamos la regla al estado actual para generar un estado hijo
             apply_fwd_rule( ruleid, &estado, &hijo );
-            
-            if(heuristica(hijo) < INT_MAX) {
+            h = heuristica(hijo);
+            if(h < INT_MAX) {
                 // Si el estado hijo es alcanzable desde el estado objetivo, se calcula el costo para
                 // alcanzar el estado hijo
-                int hijo_d = d + get_fwd_rule_cost(ruleid);
-                int *ant_hijo_d = state_map_get(map, &hijo);
+                int hijo_g = g + get_fwd_rule_cost(ruleid);
+                int *anterior_hijo_g = state_map_get(map, &hijo);
 
                 // Si el hijo no ha sido explorado antes, o si el nuevo costo es menor que el mejor conocido, 
                 // se actualiza el costo en el mapa y se agrega el hijo a la cola de prioridad
-                if((ant_hijo_d == NULL) || (*ant_hijo_d > hijo_d)) {
-                    state_map_add(map, &hijo, hijo_d);
-                    q.Add(hijo_d + heuristica(hijo),hijo_d,hijo);
+                if((anterior_hijo_g == NULL) || (*anterior_hijo_g > hijo_g)) {
+                    state_map_add(map, &hijo, hijo_g);
+                    q.Add(hijo_g + h, hijo_g, hijo);
                 }
             }
         }
     }
-    return 0; // Sin camino
+    return -1; // Sin camino
 }
 
 
@@ -107,8 +105,14 @@ int main(int argc, char const *argv[]) {
 
     cout << "Construyendo heuristica..." << endl;
     init_heuristica();
-    cout << "Heuristica del estado inicial: " << heuristica(init) << endl;
-    a_estrella(&init);
+    cout << "Buscando camino..." << endl;
+    int costo = a_estrella(&init);
+
+    if (costo == -1){
+        cout << "No se encontro camino" << endl;
+    } else {
+        cout << "Costo del camino: " << costo << endl;
+    }
 
     return 0;
 }
