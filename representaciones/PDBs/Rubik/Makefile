@@ -95,3 +95,6 @@ esquinasY.pdb:
 clean:
 	rm -fr *.A *.succ *.dist *.distSummary *.distSummaryPP *.generator *.dist_pdb psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c abstractor *.dSYM *.o *~ *.c
 	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+
+clean_pdb:
+	rm -fr *.pdb *.abst
