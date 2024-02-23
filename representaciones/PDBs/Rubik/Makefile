@@ -63,7 +63,7 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: bordesW.pdb bordesY.pdb esquinasW.pdb esquinasY.pdb
+pdb: bordesW.pdb bordesY.pdb ESQUINAS.pdb
 
 bordesW.pdb:
 	make RubikCube3/bordesW.pdb
