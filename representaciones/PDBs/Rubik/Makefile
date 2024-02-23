@@ -63,10 +63,24 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb:
+pdb: bordesW.pdb bordesY.pdb esquinasW.pdb esquinasY.pdb
+
+bordesW.pdb:
 	make RubikCube3/bordesW.pdb
+	rm -f *.distSummaryPP abstractor
+	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+	
+bordesY.pdb:
 	make RubikCube3/bordesY.pdb
+	rm -f *.distSummaryPP abstractor
+	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+
+esquinasW.pdb:
 	make RubikCube3/esquinasW.pdb
+	rm -f *.distSummaryPP abstractor
+	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+
+esquinasY.pdb:
 	make RubikCube3/esquinasY.pdb
 	rm -f *.distSummaryPP abstractor
 	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
@@ -78,7 +92,7 @@ pdb:
 
 %.A: %.c ../../../global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/A-estrella.cpp -include $< -include heuristicaRubikCube3.cpp -o $@
+	@$(CXX) $(OPT) ../../../global/A-estrella.cpp -include $< -include heuristica$*.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
