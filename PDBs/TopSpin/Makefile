@@ -64,27 +64,15 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: bordesW.pdb bordesY.pdb ESQUINAS.pdb
+pdb: TopSpin12-4P1.pdb TopSpin12-4P2.pdb
 
-bordesW.pdb:
-	make RubikCube3/bordesW.pdb
-	rm -f abstractor bordesW.psvn bordesW.distSummaryPP
+TopSpin12-4P1.pdb:
+	make TopSpin12-4P1.pdb
+	rm -f abstractor TopSpin12-4P1.psvn TopSpin12-4P1.distSummaryPP
 	
-bordesY.pdb:
-	make RubikCube3/bordesY.pdb
-	rm -f abstractor bordesY.psvn bordesY.distSummaryPP
-
-esquinasW.pdb:
-	make RubikCube3/esquinasW.pdb
-	rm -f abstractor esquinasW.psvn esquinasW.distSummaryPP
-
-esquinasY.pdb:
-	make RubikCube3/esquinasY.pdb
-	rm -f abstractor esquinasY.psvn esquinasY.distSummaryPP
-
-ESQUINAS.pdb:
-	make RubikCube3/ESQUINAS.pdb
-	rm -f abstractor ESQUINAS.psvn ESQUINAS.distSummaryPP
+TopSpin12-4P2.pdb:
+	make TopSpin12-4P2.pdb
+	rm -f abstractor TopSpin12-4P2.psvn TopSpin12-4P2.distSummaryPP
 
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
@@ -93,7 +81,7 @@ ESQUINAS.pdb:
 
 %.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristica$*.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristicaTopSpin.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
