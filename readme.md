@@ -28,4 +28,4 @@ Usando los archivos distSummary.cpp (buscar sin poda) y distSummaryPP.cpp (busca
 https://docs.google.com/spreadsheets/d/1KhgxJZJG3csaIUZU_vmI8zaUU5XLx48pKe7m43dvi6U/edit#gid=0
 
 El archivo analisis.py ayuda a sacar el numero de estados totales y el factor de ramificacion. Este mismo archivo
-usa el archivo resultado.txt para realizar dicho proceso, en el cual se coloca el resultado de un problema usando una de las busqueda (distSummary o distSummaryPP)
+usa el archivo resultado.txt para realizar dicho proceso, en el cual se coloca el resultado de un problema usando una de las busquedas (distSummary o distSummaryPP)
