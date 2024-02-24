@@ -1,0 +1,17 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+8 estados en distancia 1
+44 estados en distancia 2
+260 estados en distancia 3
+1316 estados en distancia 4
+7370 estados en distancia 5
+39110 estados en distancia 6
+216908 estados en distancia 7
+182261 estados en distancia 8
+1188648 estados en distancia 9
+6689036 estados en distancia 10
+37616726 estados en distancia 11
+214036564 estados en distancia 12
+Tiempo de ejecucion excedido de 2 minutos
+No se encontro camino
