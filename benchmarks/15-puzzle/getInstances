@@ -1,0 +1,8 @@
+filename="./15_puzzle_100_instances_korf.txt"
+count=1
+
+while IFS= read -r line
+do
+	echo "$line" > "instances/$count.txt"
+	((count++))
+done < "$filename"
