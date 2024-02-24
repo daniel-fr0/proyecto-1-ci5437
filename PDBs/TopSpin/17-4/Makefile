@@ -64,7 +64,7 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: part1.pdb part2.pdb
+pdb: part1.pdb part2.pdb part3.pdb
 
 part1.pdb:
 	make TopSpin17-4/part1.pdb
@@ -74,6 +74,10 @@ part2.pdb:
 	make TopSpin17-4/part2.pdb
 	rm -f abstractor part2.psvn part2.distSummaryPP
 
+part3.pdb:
+	make TopSpin17-4/part3.pdb
+	rm -f abstractor part3.psvn part3.distSummaryPP
+
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/dist_pdb.cpp -include $< -o $@
@@ -81,7 +85,7 @@ part2.pdb:
 
 %.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaTopSpin.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristicaTopSpin17-4.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
