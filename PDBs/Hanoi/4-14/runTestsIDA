@@ -1,0 +1,7 @@
+base="../../../benchmarks/hanoi_4p14d/hanoi_4p14d.d="
+
+./hanoi4-14.IDA "${base}005" 120 > "resultadosIDA/005.txt" &&
+./hanoi4-14.IDA "${base}010" 120 > "resultadosIDA/010.txt" &&
+./hanoi4-14.IDA "${base}015" 120 > "resultadosIDA/015.txt" &&
+./hanoi4-14.IDA "${base}2000" 120 > "resultadosIDA/2000.txt" &&
+./hanoi4-14.IDA "${base}2000000" 120 > "resultadosIDA/2000000.txt"

@@ -3,7 +3,7 @@ CXX = g++
 OPT = -Wall -O3 -Wno-unused-function -Wno-unused-variable
 PSVNOPT = --state_map --backwards_moves --history_len=0
 # PSVNOPT = --state_map --backwards_moves --fwd_history_len=1 --bwd_history_len=0
-ROOT_DIR = ../../
+ROOT_DIR = ../../../
 
 psvn2c_core.c:
 	@cp $(ROOT_DIR)src/psvn2c_core.c ./psvn2c_core.c
@@ -64,27 +64,15 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: bordesW.pdb bordesY.pdb ESQUINAS.pdb
+pdb: part1.pdb part2.pdb
 
-bordesW.pdb:
-	make RubikCube3/bordesW.pdb
-	rm -f abstractor bordesW.psvn bordesW.distSummaryPP
+part1.pdb:
+	make hanoi4-18/part1.pdb
+	rm -f abstractor part1.psvn part1.distSummaryPP
 	
-bordesY.pdb:
-	make RubikCube3/bordesY.pdb
-	rm -f abstractor bordesY.psvn bordesY.distSummaryPP
-
-esquinasW.pdb:
-	make RubikCube3/esquinasW.pdb
-	rm -f abstractor esquinasW.psvn esquinasW.distSummaryPP
-
-esquinasY.pdb:
-	make RubikCube3/esquinasY.pdb
-	rm -f abstractor esquinasY.psvn esquinasY.distSummaryPP
-
-ESQUINAS.pdb:
-	make RubikCube3/ESQUINAS.pdb
-	rm -f abstractor ESQUINAS.psvn ESQUINAS.distSummaryPP
+part2.pdb:
+	make hanoi4-18/part2.pdb
+	rm -f abstractor part2.psvn part2.distSummaryPP
 
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
@@ -93,13 +81,18 @@ ESQUINAS.pdb:
 
 %.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristica$*.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaHanoi.cpp -o $@
+	@rm -f $*.c
+
+%.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaHanoi.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
 clean:
 	rm -fr *.A *.succ *.dist *.distSummary *.distSummaryPP *.generator *.dist_pdb psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c abstractor *.dSYM *.o *~ *.c
-	find . -name "*.psvn" ! -name "RubikCube3.psvn" -type f -exec rm -f {} +
+	find . -name "*.psvn" ! -name "hanoi4-18.psvn" -type f -exec rm -f {} +
 
 clean_pdb:
 	rm -fr *.pdb *.abst
