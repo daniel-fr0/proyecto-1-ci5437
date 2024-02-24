@@ -3,56 +3,57 @@ CXX = g++
 OPT = -Wall -O3 -Wno-unused-function -Wno-unused-variable
 PSVNOPT = --state_map --backwards_moves --history_len=0
 # PSVNOPT = --state_map --backwards_moves --fwd_history_len=1 --bwd_history_len=0
+ROOT_DIR = ../../
 
 psvn2c_core.c:
-	@cp ../../../src/psvn2c_core.c ./psvn2c_core.c
+	@cp $(ROOT_DIR)src/psvn2c_core.c ./psvn2c_core.c
 
 psvn2c_state_map.c:
-	@cp ../../../src/psvn2c_state_map.c ./psvn2c_state_map.c
+	@cp $(ROOT_DIR)src/psvn2c_state_map.c ./psvn2c_state_map.c
 
 psvn2c_abstraction.c:
-	@cp ../../../src/psvn2c_abstraction.c ./psvn2c_abstraction.c
+	@cp $(ROOT_DIR)src/psvn2c_abstraction.c ./psvn2c_abstraction.c
 
 %.c: %.psvn psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c
 	@echo "**** Constructing $@ ..."
-	@../../../bin/psvn2c $(PSVNOPT) --name=$(*F) < $< > $@
+	@$(ROOT_DIR)bin/psvn2c $(PSVNOPT) --name=$(*F) < $< > $@
 	@rm -f ./psvn2c_core.c ./psvn2c_state_map.c ./psvn2c_abstraction.c
 
 .PRECIOUS: %.c
 
-%.succ: %.c ../../../global/succ.c
+%.succ: %.c $(ROOT_DIR)global/succ.c
 	@echo "**** Constructing $@ ..."
-	@$(CC) $(OPT) ../../../global/succ.c -include $< -o $@
+	@$(CC) $(OPT) $(ROOT_DIR)global/succ.c -include $< -o $@
 	@rm -f $*.c
 
-%.dist: %.c ../../../global/dist.cpp
+%.dist: %.c $(ROOT_DIR)global/dist.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/dist.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/dist.cpp -include $< -o $@
 	@rm -f $*.c
 
-%.distSummary: %.c ../../../global/distSummary.cpp
+%.distSummary: %.c $(ROOT_DIR)global/distSummary.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/distSummary.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/distSummary.cpp -include $< -o $@
 	@rm -f $*.c
 
-%.distSummaryPP: %.c ../../../global/distSummaryPP.cpp
+%.distSummaryPP: %.c $(ROOT_DIR)global/distSummaryPP.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/distSummaryPP.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/distSummaryPP.cpp -include $< -o $@
 	@rm -f $*.c
 
-%.dist: %.c ../../../global/dist.cpp
+%.dist: %.c $(ROOT_DIR)global/dist.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/dist.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/dist.cpp -include $< -o $@
 	@rm -f $*.c
 
-%.generator: %.c ../../../global/generator.cpp
+%.generator: %.c $(ROOT_DIR)global/generator.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/generator.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/generator.cpp -include $< -o $@
 	@rm -f $*.c
 
 abstractor:
 	@echo "**** Constructing abstractor ..."
-	@$(CXX) $(OPT) ../../../src/abstractor.cpp ../../../src/psvn.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)src/abstractor.cpp $(ROOT_DIR)src/psvn.cpp -o $@
 
 %.pdb: abstractor
 	@rm -f `basename $*`.abst `basename $*`.pdb `basename $*`.psvn
@@ -85,14 +86,14 @@ ESQUINAS.pdb:
 	make RubikCube3/ESQUINAS.pdb
 	rm -f abstractor ESQUINAS.psvn ESQUINAS.distSummaryPP
 
-%.dist_pdb: %.c ../../../global/dist_pdb.cpp
+%.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/dist_pdb.cpp -include $< -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/dist_pdb.cpp -include $< -o $@
 	@rm -f $*.c
 
-%.A: %.c ../../../global/A-estrella.cpp
+%.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) ../../../global/A-estrella.cpp -include $< -include heuristica$*.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristica$*.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean

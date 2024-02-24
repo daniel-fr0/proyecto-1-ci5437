@@ -18,15 +18,22 @@ int a_estrella(state_t *init){
     // Agrega el estado inicial a el state map y a la cola de prioridad 
     state_map_add(map, init, 0);
     q.Add(heuristica(*init), 0, *init);
+
+    int d, numEnD, nodosTotales;
+    d = 0;
+    numEnD=0;
+    nodosTotales = 0;
     
     // Buscamos el estado objetivo hasta que la cola este vacia
     while( !q.Empty()) {
+        if (q.TopG() > d){
+            cout << numEnD << " estados en distancia " << d << endl;
+            d = q.TopG();
+            numEnD = 0;
+        }
+
         // Tomamos el estado con la prioridad mas alta
         estado = q.Top();
-
-        cout << "Estado actual: " << endl;
-        print_state(stdout, &estado);
-        cout << endl;
 
         // Tomamos el costo del estado con la prioridad mas alta
         g = q.TopG();
@@ -36,16 +43,21 @@ int a_estrella(state_t *init){
         // Pasamos al siguiente elemento del while si el mejor costo conocido
         // es menor que el costo actual
         const int *best_g = state_map_get(map,&estado);
-        cout << "Best g = " << *best_g << endl;
         assert(best_g != NULL);
-        if(*best_g < g){
-            continue;
-        }
+        if(*best_g < g) continue;
+            
+        numEnD++;
+        nodosTotales++;
+
         // Actualizamos el costo del estado actual en el mapa
         state_map_add(map, &estado, g);
 
         // Si el estado actual es el objetivo, retornamos el costo para alcanzarlo
-        if (is_goal(&estado)){
+        if (is_goal(&estado)) {
+            if (numEnD > 0){
+                cout << numEnD << " estados en distancia " << d << endl;
+            }
+            cout << nodosTotales << " estados totales" << endl;
             return g;
         }
 
@@ -76,6 +88,11 @@ int a_estrella(state_t *init){
             }
         }
     }
+
+    if (numEnD > 0){
+        cout << numEnD << " estados en distancia " << d << endl;
+    }
+    cout << nodosTotales << " estados totales" << endl;
     return -1; // Sin camino
 }
 
@@ -118,7 +135,7 @@ int main(int argc, char const *argv[]) {
     if (costo == -1){
         cout << "No se encontro camino" << endl;
     } else {
-        cout << "Costo del camino: " << costo << endl;
+        cout << "Costo del camino minimo encontrado: " << costo << endl;
     }
 
     return 0;
