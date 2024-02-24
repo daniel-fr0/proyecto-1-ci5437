@@ -1,0 +1,7 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+1 estados en distancia 1
+1 estados en distancia 2
+3 estados totales
+Costo del camino minimo encontrado: 2
