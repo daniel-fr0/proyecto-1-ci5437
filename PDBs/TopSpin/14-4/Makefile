@@ -67,11 +67,11 @@ abstractor:
 pdb: part1.pdb part2.pdb
 
 part1.pdb:
-	make TopSpin12-4/part1.pdb
+	make TopSpin14-4/part1.pdb
 	rm -f abstractor part1.psvn part1.distSummaryPP
 	
 part2.pdb:
-	make TopSpin12-4/part2.pdb
+	make TopSpin14-4/part2.pdb
 	rm -f abstractor part2.psvn part2.distSummaryPP
 
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
@@ -87,7 +87,7 @@ part2.pdb:
 .PHONY: clean
 clean:
 	rm -fr *.A *.succ *.dist *.distSummary *.distSummaryPP *.generator *.dist_pdb psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c abstractor *.dSYM *.o *~ *.c
-	find . -name "*.psvn" ! -name "TopSpin12-4.psvn" -type f -exec rm -f {} +
+	find . -name "*.psvn" ! -name "TopSpin14-4.psvn" -type f -exec rm -f {} +
 
 clean_pdb:
 	rm -fr *.pdb *.abst
