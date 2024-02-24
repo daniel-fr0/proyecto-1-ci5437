@@ -3,7 +3,7 @@ CXX = g++
 OPT = -Wall -O3 -Wno-unused-function -Wno-unused-variable
 PSVNOPT = --state_map --backwards_moves --history_len=0
 # PSVNOPT = --state_map --backwards_moves --fwd_history_len=1 --bwd_history_len=0
-ROOT_DIR = ../../../
+ROOT_DIR = ../../
 
 psvn2c_core.c:
 	@cp $(ROOT_DIR)src/psvn2c_core.c ./psvn2c_core.c
@@ -64,15 +64,15 @@ abstractor:
 	@./`basename $*`.distSummaryPP `basename $*`.pdb
 	@rm -f abstractor `basename $*`.distSummaryPP
 
-pdb: TopSpin12-4P1.pdb TopSpin12-4P2.pdb
+pdb: part1.pdb part2.pdb
 
-TopSpin12-4P1.pdb:
-	make TopSpin12-4P1.pdb
-	rm -f abstractor TopSpin12-4P1.psvn TopSpin12-4P1.distSummaryPP
+part1.pdb:
+	make TopSpin12-4/part1.pdb
+	rm -f abstractor part1.psvn part1.distSummaryPP
 	
-TopSpin12-4P2.pdb:
-	make TopSpin12-4P2.pdb
-	rm -f abstractor TopSpin12-4P2.psvn TopSpin12-4P2.distSummaryPP
+part2.pdb:
+	make TopSpin12-4/part2.pdb
+	rm -f abstractor part2.psvn part2.distSummaryPP
 
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
