@@ -2,5 +2,5 @@ dir="../../../benchmarks/15-puzzle/instances"
 
 for ((i=1; i<=100; i++))
 do
-	./15-puzzle.sum.IDA "${dir}/$i.txt" > "resultadosSumIDA/$i.txt"
+	./15-puzzle.sum.IDA "${dir}/$i.txt" 120 > "resultadosSumIDA/$i.txt"
 done
