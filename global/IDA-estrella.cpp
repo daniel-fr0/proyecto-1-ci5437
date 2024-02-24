@@ -128,7 +128,7 @@ int main(int argc, char const *argv[]) {
 
     future<int> future = async(launch::async, ida_estrella, &init);
 
-    if (future.wait_for(chrono::seconds(3)) == future_status::timeout){
+    if (future.wait_for(chrono::seconds(TIME_LIMIT)) == future_status::timeout){
         stop = true;
         cout << "Tiempo de ejecucion excedido de " << TIME_LIMIT / 60 << " minutos" << endl;
         cout << "No se encontro camino" << endl;
