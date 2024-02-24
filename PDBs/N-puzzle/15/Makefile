@@ -88,6 +88,11 @@ part3.pdb:
 	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaSum3.cpp -o $@
 	@rm -f $*.c
 
+%.sum.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaSum3.cpp -o $@
+	@rm -f $*.c
+
 %.man.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaManhattan.cpp -o $@
