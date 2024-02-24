@@ -1,6 +1,7 @@
 Informe Proyecto 1
 
 1) Representaciones:
+   
 N-puzzle:
 Las representaciones de ambos problemas, funcionan usando las reglas básicas para la representación de problemas en psvn. En las reglas, se trabaja con la casilla “b” que representa la casilla vacia, y dependiendo de su posición, la regla correspondiente intercambia dicha casilla con una de sus casillas adyacentes dependiendo del caso. Para las esquinas solo tenemos 2 posibles movimientos, para los bordes 3 posibles movimientos y para el resto 4. Por ejemplo para la casilla de la esquina superior izquierda, tenemos dos posibles movimientos: derecha y abajo, las cuales se representan como (para el 15-puzzle):
 
