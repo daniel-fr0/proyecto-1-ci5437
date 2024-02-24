@@ -6,4 +6,3 @@ map 17 5 0
 map 17 6 0
 map 17 7 0
 map 17 8 0
-map 17 9 0
