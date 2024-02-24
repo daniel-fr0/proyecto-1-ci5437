@@ -1,0 +1,51 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+1 estados en distancia 1
+2 estados en distancia 2
+4 estados en distancia 3
+14 estados en distancia 4
+3 estados en distancia 5
+13 estados en distancia 6
+1 estados en distancia 7
+1 estados en distancia 8
+1 estados en distancia 9
+12 estados en distancia 10
+1 estados en distancia 11
+10 estados en distancia 12
+1 estados en distancia 13
+4 estados en distancia 14
+1 estados en distancia 15
+1 estados en distancia 16
+11 estados en distancia 17
+27 estados en distancia 18
+1 estados en distancia 19
+220 estados en distancia 20
+1 estados en distancia 21
+1 estados en distancia 22
+1 estados en distancia 23
+1 estados en distancia 24
+1 estados en distancia 25
+1 estados en distancia 26
+1 estados en distancia 27
+1 estados en distancia 28
+1 estados en distancia 29
+380 estados en distancia 30
+1 estados en distancia 31
+3298 estados en distancia 32
+1 estados en distancia 33
+1023 estados en distancia 34
+6164 estados en distancia 35
+8587 estados en distancia 36
+1 estados en distancia 37
+12 estados en distancia 38
+1 estados en distancia 39
+6408 estados en distancia 40
+46339 estados en distancia 41
+1 estados en distancia 42
+1 estados en distancia 43
+1 estados en distancia 44
+1 estados en distancia 45
+1 estados en distancia 46
+72559 estados totales
+Costo del camino minimo encontrado: 46
