@@ -100,11 +100,21 @@ part6.pdb:
 	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaSum6.cpp -o $@
 	@rm -f $*.c
 
+%.sum.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaSum6.cpp -o $@
+	@rm -f $*.c
+
 %.man.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaManhattan.cpp -o $@
 	@rm -f $*.c
-	
+
+%.man.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaManhattan.cpp -o $@
+	@rm -f $*.c	
+
 .PHONY: clean
 clean:
 	rm -fr *.A *.succ *.dist *.distSummary *.distSummaryPP *.generator *.dist_pdb psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c abstractor *.dSYM *.o *~ *.c

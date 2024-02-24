@@ -83,6 +83,11 @@ part2.pdb:
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaHanoi.cpp -o $@
 	@rm -f $*.c
+
+%.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaHanoi.cpp -o $@
+	@rm -f $*.c
 	
 .PHONY: clean
 clean:
