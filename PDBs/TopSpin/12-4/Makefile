@@ -3,7 +3,7 @@ CXX = g++
 OPT = -Wall -O3 -Wno-unused-function -Wno-unused-variable
 PSVNOPT = --state_map --backwards_moves --history_len=0
 # PSVNOPT = --state_map --backwards_moves --fwd_history_len=1 --bwd_history_len=0
-ROOT_DIR = ../../
+ROOT_DIR = ../../../
 
 psvn2c_core.c:
 	@cp $(ROOT_DIR)src/psvn2c_core.c ./psvn2c_core.c
@@ -81,7 +81,7 @@ TopSpin12-4P2.pdb:
 
 %.A: %.c $(ROOT_DIR)global/A-estrella.cpp
 	@echo "**** Constructing $@ ..."
-	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include heuristicaTopSpin.cpp -o $@
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include ../heuristicaTopSpin.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
