@@ -4,8 +4,8 @@ state_map_t *map1, *map2;
 abstraction_t *abst1, *abst2;
 
 void init_heuristica() {
-	FILE *f1 = fopen("TopSpin12-4P1.pdb", "r");
-	FILE *f2 = fopen("TopSpin12-4P2.pdb", "r");
+	FILE *f1 = fopen("part1.pdb", "r");
+	FILE *f2 = fopen("part2.pdb", "r");
 
 	if (f1 == NULL || f2 == NULL) {
 		std::cerr << "Error: No se pudieron abrir los PDB" << std::endl;
@@ -20,8 +20,8 @@ void init_heuristica() {
 	fclose(f2);
 
 	// Se leen las abstracciones de los PDBs para poder calcular la heuristica
-	abst1 = read_abstraction_from_file("TopSpin12-4P1.abst");
-	abst2 = read_abstraction_from_file("TopSpin12-4P2.abst");
+	abst1 = read_abstraction_from_file("part1.abst");
+	abst2 = read_abstraction_from_file("part2.abst");
 }
 
 unsigned heuristica(state_t estado) {
