@@ -65,7 +65,7 @@ pair<bool, int> f_bounded_dfs_visit(int bound, int g){
     init_fwd_iter(&iter, &state);
     while((ruleid = next_ruleid(&iter)) >= 0 && !stop){
         if (!fwd_rule_valid_for_history(hist, ruleid)) continue;
-        next_fwd_history(hist, ruleid);
+        hist = next_fwd_history(hist, ruleid);
 
         int cost = g + get_fwd_rule_cost(ruleid);
         apply_fwd_rule(ruleid, &state, &child);

@@ -68,7 +68,7 @@ int a_estrella(state_t *init){
         init_fwd_iter(&iter,&estado);     
         while(( ruleid = next_ruleid(&iter)) >= 0 ) {
             if (!fwd_rule_valid_for_history(hist,ruleid)) continue;
-            next_fwd_history(hist,ruleid);
+            hist = next_fwd_history(hist,ruleid);
 
             // Aplicamos la regla al estado actual para generar un estado hijo
             apply_fwd_rule( ruleid, &estado, &hijo );
