@@ -14,28 +14,26 @@ using namespace std;
 
 atomic<bool> stop(false);
 
-pair<bool, int> f_bounded_dfs_visit(int bound, int g);
+pair<bool, int> f_bounded_dfs_visit(state_t state, int bound, int g);
 
-state_t state;
 vector<int> path;
 int explored_distance, explored_nodes, total_nodes;
 
 int ida_estrella(state_t *init){
-    state = *init;
-    int bound = heuristica(state);
+    int bound = heuristica(*init);
     explored_distance = 0;
     explored_nodes = 0;
     total_nodes = 0;
 
     while (!stop){
-        pair<bool, int> p = f_bounded_dfs_visit(bound, 0);
+        pair<bool, int> p = f_bounded_dfs_visit(*init, bound, 0);
         if (p.first) return p.second;
         bound = p.second;
     }
     return -1;
 }
 
-pair<bool, int> f_bounded_dfs_visit(int bound, int g){
+pair<bool, int> f_bounded_dfs_visit(state_t state, int bound, int g){
     if (g > explored_distance) {
         cout << explored_nodes << " estados en distancia " << explored_distance << endl;
         explored_distance = g;
@@ -57,7 +55,7 @@ pair<bool, int> f_bounded_dfs_visit(int bound, int g){
     int t = INT_MAX;
     ruleid_iterator_t iter;
     int ruleid;
-    state_t child, current_state = state;
+    state_t child;
     
     int hist;
     hist = init_history;
@@ -69,16 +67,14 @@ pair<bool, int> f_bounded_dfs_visit(int bound, int g){
 
         int cost = g + get_fwd_rule_cost(ruleid);
         apply_fwd_rule(ruleid, &state, &child);
-        state = child;
 
         if (heuristica(child) < INT_MAX){
             path.push_back(ruleid);
-            pair<bool, int> p = f_bounded_dfs_visit(bound, cost);
+            pair<bool, int> p = f_bounded_dfs_visit(child, bound, cost);
             if (p.first) return p;
             if (p.second < t) t = p.second;
             path.pop_back();
         }
-        state = current_state;
     }
 
     return make_pair(false, t);

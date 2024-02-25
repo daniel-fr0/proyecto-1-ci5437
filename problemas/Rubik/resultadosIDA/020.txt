@@ -1,0 +1,16 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+2 estados en distancia 1
+41 estados en distancia 2
+248 estados en distancia 3
+1958 estados en distancia 4
+3961 estados en distancia 5
+54757 estados en distancia 6
+100871 estados en distancia 7
+910855 estados en distancia 8
+712888 estados en distancia 9
+5073485 estados en distancia 10
+1 estados en distancia 11
+94866685 estados en distancia 12
+169585019 estados en distancia 13
