@@ -74,6 +74,10 @@ part2.pdb:
 	make hanoi4-12/part2.pdb
 	rm -f abstractor part2.psvn part2.distSummaryPP
 
+completo.pdb:
+	make hanoi4-12/completo.pdb
+	rm -f abstractor completo.psvn completo.distSummaryPP
+
 %.dist_pdb: %.c $(ROOT_DIR)global/dist_pdb.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/dist_pdb.cpp -include $< -o $@
@@ -87,6 +91,16 @@ part2.pdb:
 %.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
 	@echo "**** Constructing $@ ..."
 	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include ../heuristicaHanoi.cpp -o $@
+	@rm -f $*.c
+
+%.completo.A: %.c $(ROOT_DIR)global/A-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/A-estrella.cpp -include $< -include problemaCompleto.cpp -o $@
+	@rm -f $*.c
+
+%.completo.IDA: %.c $(ROOT_DIR)global/IDA-estrella.cpp
+	@echo "**** Constructing $@ ..."
+	@$(CXX) $(OPT) $(ROOT_DIR)global/IDA-estrella.cpp -include $< -include problemaCompleto.cpp -o $@
 	@rm -f $*.c
 	
 .PHONY: clean
