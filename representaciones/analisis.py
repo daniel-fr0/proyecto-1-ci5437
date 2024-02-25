@@ -5,7 +5,7 @@ def obtener_valores(archivo):
 		valores = []
 		# match line pattern "<int> states at distance <int>"
 		for linea in f:
-			if "states at distance" in linea:
+			if "states at distance" in linea or "estados en distancia" in linea:
 				valores.append(int(linea.split()[0]))
 	return valores
 
