@@ -52,9 +52,9 @@ Donde `<heuristica>` corresponde a la heuristica que se quiere usar, ya sea `man
 ### Ejecutar busqueda
 Para ejecutar un programa de busqueda se debe correr en la terminal lo siguiente:
 ```bash
-	./<programa> <instancia>
+	./programa <instancia>
 ```
-Donde `<programa>` corresponde al nombre del archivo ejecutable que se genero en el paso anterior, y `<instancia>` es el nombre del archivo `.txt` que contiene la instancia del problema que se quiere resolver. El formato del archivo corresponde a la representacion de un estado del problema que se tomara como estado inicial.
+Donde `programa` corresponde al nombre del archivo ejecutable que se genero en el paso anterior, y `<instancia>` es el nombre del archivo `.txt` que contiene la instancia del problema que se quiere resolver. El formato del archivo corresponde a la representacion de un estado del problema que se tomara como estado inicial.
 
 ## Representaciones de los problemas
    
@@ -103,6 +103,8 @@ En este caso, como varia mucho el tiempo que se pudo correr cada problema, no se
 Particularmente en el caso de **las torres de hanoi** podemos ver que este problema (*con poda de padres*) logra alcanzar una profundidad mucho mayor que los demás problemas con cualquier tipo de busqueda, y al mismo tiempo se ve que el número de estados alcanzados no es muy diferente al de los demás problemas. Esto, junto al hecho de que este problema es el que tiene el factor de ramificación más bajo, nos da una idea de que el arból de búsqueda de este problema es muy profundo. Pero como el arbol no es muy ancho, el número de estados totales no es muy grande y es manejable para la memoria.
 
 Cabe destacar que el problema de **hanoi con 4 astas y 12 discos** fue el único que completó la busqueda, con poda de padres, por lo que logró alcanzar todos los estados posibles. Esto quiere decir que podria ser util construir un **PDB** para este problema con **todos** los estados posibles.
+
+Nota: mas tarde se pudo ver que la representacion compacta de **top spin**, resultaba en un factor de ramificacion mas bajo, y el problema de **top spin 12-4** fue el unico que logro alcanzar todos los estados posibles, con poda de padres. A pesar de esto, el problema de **hanoi 4-12** sigue siendo el que alcanza una profundidad mayor y el que tiene el factor de ramificacion mas bajo.
 
 ## Heuristicas
 
@@ -165,6 +167,27 @@ Los pdbs `esquinasW.pdb` y `esquinasY.pdb` ya no son considerados en la heuristi
 	make esquinasW.pdb &&
 	make esquinasY.pdb
 ```
+
+## Algoritmos informados
+Se implementaron los algoritmos de busqueda informada **A\*** y **IDA\*** en los archivos `A-estrella.cpp` e `IDA-estrella.cpp` respectivamente. En ambos casos se utilizan las heuristicas implementadas en los archivos correspondientes a cada problema. Y la ejecución de estos programas requiere como entrada la direccion de un archivo de instancia del problema que se quiere resolver. 
+
+En el caso de *IDA\**, como el algoritmo explora estados duplicados, en el caso de problemas con muchos duplicados, se podria quedar explorando todo el arbol y nunca terminar. Incluso, como usa mucha menos memoria que *A\**, no va a ocurrir que el programa se cierre por falta de memoria. Por lo que en la implementacion de *IDA\** se incluye un tiempo limite para la busqueda. Se puede especificar un tiempo limite en segundos para la busqueda, si no se especifica se toma un tiempo limite de 5 minutos por defecto.
+
+Para ejecutar un programa de *A\**:
+```bash
+	./programa.A <instancia>
+```
+Para ejecutar un programa de *IDA\**:
+```bash
+	./programa.IDA [tiempo limite en segundos] <instancia>
+```
+
+
+Para registrar los resultados, en ambos algoritmos se lleva una cuenta de los nodos visitados por distancia y totales, cada vez que se explora una nueva distancia a partir del estado inicial, se imprime en pantalla la cantidad de estados visitados hasta esa distancia. Luego de imprimir se reinicia la cuenta de visitados por esa distancia, para empezar la cuenta para la siguiente distancia.
+
+Esto hace que la informacion registrada por estos algoritmos sea distinta a la registrada anteriormente con los algoritmos no informados, dado que en estos algoritmos la prioridad es por *f-valor* y *cota de f-valor* para *A\** e *IDA\** respectivamente, y no por la profundidad del arbol de busqueda. 
+
+Por lo tanto hay que notar que en los resultados no se tiene cuantos nodos hay en cada profundidad, sino cuantos nodos se visitaron desde que se alcanzó una profundidad hasta que se alcanza la siguiente.
 
 ## Resultados de busquedas
 Para cada problema se corrieron las busquedas con las diferentes heuristicas y se registraron los resultados en las subcarpetas de cada problema. Para ello se utilizaron los casos de pruebas en la carpeta `benchmarks`.
