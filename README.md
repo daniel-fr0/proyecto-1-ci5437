@@ -1,4 +1,9 @@
 # [Informe](INFORME.md)
+Se puede encontrar un breve informe en [`INFORME.md`](INFORME.md)
+
+En esta parte se va a encontrar informacion sobre:
+- Como esta estructurado el repositorio.
+- Detalles sobre la implementacion de los problemas, las decisiones tomadas y los resultados obtenidos.
 # Objetivo
 
 El objetivo del proyecto es aprender sobre el modelo de espacio de estados y sobre
