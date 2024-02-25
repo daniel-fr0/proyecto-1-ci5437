@@ -2,6 +2,29 @@
 
 A continuacion se detallan detalles sobre la implementacion de los problemas, las decisiones tomadas y los resultados obtenidos.
 
+## Como ejecutar
+Para cada problema se deben correr los comandos en el directorio correspondiente, dentro de la carpeta `problemas`.
+
+### Generar PDB
+Para generar los PDB de un problema se debe correr en la terminal lo siguiente en el directorio del problema:
+```bash
+	make pdb
+```
+
+### Generar programa de busqueda
+Para compilar un programa de busqueda se debe correr en la terminal lo siguiente:
+```bash
+	make <problema>.<busqueda>
+```
+Donde `<problema>` corresponde al nombre del archivo `.psvn` que representa al problema, y `<busqueda>` es la terminacion correspondiente al tipo de busqueda que se quiere hacer, ya sea `A` o `IDA` para *A\** o *IDA\** respectivamente.
+
+### Ejecutar busqueda
+Para ejecutar un programa de busqueda se debe correr en la terminal lo siguiente:
+```bash
+	./<programa> <instancia>
+```
+Donde `<programa>` corresponde al nombre del archivo ejecutable que se genero en el paso anterior, y `<instancia>` es el nombre del archivo `.txt` que contiene la instancia del problema que se quiere resolver. El formato del archivo corresponde a la representacion de un estado del problema que se tomara como estado inicial.
+
 ## Representaciones de los problemas
    
 ### N-puzzle
