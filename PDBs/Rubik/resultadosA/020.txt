@@ -1,0 +1,21 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+5 estados en distancia 1
+2 estados en distancia 2
+3 estados en distancia 3
+154 estados en distancia 4
+1219 estados en distancia 5
+13 estados en distancia 6
+13818 estados en distancia 7
+53 estados en distancia 8
+74243 estados en distancia 9
+1 estados en distancia 10
+797574 estados en distancia 11
+793351 estados en distancia 12
+49116 estados en distancia 13
+Killed
+
+real    1m24.297s
+user    0m27.985s
+sys     0m15.612s

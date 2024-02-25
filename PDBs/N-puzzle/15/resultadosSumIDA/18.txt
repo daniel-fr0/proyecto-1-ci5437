@@ -1,0 +1,44 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+2 estados en distancia 1
+6 estados en distancia 2
+5 estados en distancia 3
+7 estados en distancia 4
+1 estados en distancia 5
+2 estados en distancia 6
+2 estados en distancia 7
+39 estados en distancia 8
+2 estados en distancia 9
+212 estados en distancia 10
+2 estados en distancia 11
+519 estados en distancia 12
+1 estados en distancia 13
+3 estados en distancia 14
+2 estados en distancia 15
+3949 estados en distancia 16
+2 estados en distancia 17
+9795 estados en distancia 18
+1 estados en distancia 19
+2 estados en distancia 20
+2 estados en distancia 21
+2785 estados en distancia 22
+54 estados en distancia 23
+2 estados en distancia 24
+261 estados en distancia 25
+62173 estados en distancia 26
+261 estados en distancia 27
+201935 estados en distancia 28
+1 estados en distancia 29
+938445 estados en distancia 30
+1 estados en distancia 31
+499561 estados en distancia 32
+1 estados en distancia 33
+2894938 estados en distancia 34
+2 estados en distancia 35
+2 estados en distancia 36
+13953469 estados en distancia 37
+2 estados en distancia 38
+7484713 estados en distancia 39
+Tiempo de ejecucion excedido de 2 minutos
+No se encontro camino

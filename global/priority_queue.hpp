@@ -17,6 +17,7 @@ public:
     PriorityQueue();
     int Add(int f, int g, const T& data);
     const T& Top() const;
+    int TopG() const;
     int CurrentPriority() const;
     bool Empty() const;
     void Pop();
@@ -34,10 +35,11 @@ private:
         bool Empty() const;
         int Add(int g, const T& data);
         const T& Top() const;
+        int TopG() const;
         void Clear();
         void Modify(int g, int index, const T& data);
     private:
-        std::vector<std::vector<T> > m_stacks;
+        std::vector<std::vector<std::pair<int, T>>> m_stacks;
     };
     int m_max;
     int m_at;
@@ -48,7 +50,14 @@ template<typename T>
 const T& PriorityQueue<T>::Bucket::Top() const
 {
     assert(!m_stacks.empty());
-    return m_stacks.back().back();
+    return m_stacks.back().back().second;
+}
+
+template<typename T>
+int PriorityQueue<T>::Bucket::TopG() const
+{
+    assert(!m_stacks.empty());
+    return m_stacks.back().back().first;
 }
 
 template<typename T>
@@ -70,7 +79,7 @@ int PriorityQueue<T>::Bucket::Add(int g, const T& data)
 {
     if (m_stacks.size() <= (size_t)g)
         m_stacks.resize(g + 1);
-    m_stacks[g].push_back(data);
+    m_stacks[g].push_back(std::make_pair(g, data));
     return m_stacks[g].size() - 1;
 }
 
@@ -129,6 +138,12 @@ template<typename T>
 const T& PriorityQueue<T>::Top() const
 {
     return m_buckets[m_at].Top();
+}
+
+template<typename T>
+int PriorityQueue<T>::TopG() const
+{
+    return m_buckets[m_at].TopG();
 }
 
 template<typename T>
