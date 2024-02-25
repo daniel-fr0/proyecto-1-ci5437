@@ -1,7 +1,7 @@
 base="../../../benchmarks/hanoi_4p14d/hanoi_4p14d.d="
 
-./hanoi4-14.A "${base}005" 120 > "resultadosA/005.txt" &&
-./hanoi4-14.A "${base}010" 120 > "resultadosA/010.txt" &&
-./hanoi4-14.A "${base}015" 120 > "resultadosA/015.txt" &&
-./hanoi4-14.A "${base}2000" 120 > "resultadosA/2000.txt" &&
-./hanoi4-14.A "${base}2000000" 120 > "resultadosA/2000000.txt"
+./hanoi4-14.A "${base}005" > "resultadosA/005.txt" &&
+./hanoi4-14.A "${base}010" > "resultadosA/010.txt" &&
+./hanoi4-14.A "${base}015" > "resultadosA/015.txt" &&
+./hanoi4-14.A "${base}2000" > "resultadosA/2000.txt" &&
+./hanoi4-14.A "${base}2000000" > "resultadosA/2000000.txt"
