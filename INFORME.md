@@ -13,6 +13,10 @@
   - [Maximo de PDBs](#maximo-de-pdbs)
 - [PDBs](#pdbs)
   - [N-puzzle](#n-puzzle)
+  - [Hanoi](#hanoi)
+  - [Topspin](#topspin)
+  - [Cubo de Rubik](#cubo-de-rubik)
+- [Resultados de busquedas](#resultados-de-busquedas)
 
 
 ## Como ejecutar
@@ -161,3 +165,6 @@ Los pdbs `esquinasW.pdb` y `esquinasY.pdb` ya no son considerados en la heuristi
 	make esquinasW.pdb &&
 	make esquinasY.pdb
 ```
+
+## Resultados de busquedas
+Para cada problema se corrieron las busquedas con las diferentes heuristicas y se registraron los resultados en las subcarpetas de cada problema. Para ello se utilizaron los casos de pruebas en la carpeta `benchmarks`.
