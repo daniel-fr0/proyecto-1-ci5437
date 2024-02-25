@@ -7,3 +7,4 @@ abstractor
 *.pdb
 *.A
 *.IDA
+*.sh
