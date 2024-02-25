@@ -1,0 +1,15 @@
+Construyendo heuristica...
+Buscando camino...
+1 estados en distancia 0
+12 estados en distancia 1
+5 estados en distancia 2
+49 estados en distancia 3
+157 estados en distancia 4
+6 estados en distancia 5
+472 estados en distancia 6
+1630 estados en distancia 7
+3 estados en distancia 8
+2 estados en distancia 9
+2337 estados totales
+Costo del camino minimo encontrado: 9
+12 12 15 15 15 6 6 6 3 
