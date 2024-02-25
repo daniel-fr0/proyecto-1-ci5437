@@ -17,6 +17,8 @@
   - [Topspin](#topspin)
   - [Cubo de Rubik](#cubo-de-rubik)
 - [Resultados de busquedas](#resultados-de-busquedas)
+- [Casos de prueba](#casos-de-prueba)
+- [Conclusiones](#conclusiones)
 
 
 ## Como ejecutar
