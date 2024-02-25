@@ -191,3 +191,15 @@ Por lo tanto hay que notar que en los resultados no se tiene cuantos nodos hay e
 
 ## Resultados de busquedas
 Para cada problema se corrieron las busquedas con las diferentes heuristicas y se registraron los resultados en las subcarpetas de cada problema. Para ello se utilizaron los casos de pruebas en la carpeta `benchmarks`.
+
+## Casos de prueba
+Se generaron casos de prueba para cada problema, los cuales se encuentran en la carpeta `casosDePrueba`.
+
+## Conclusiones
+**IDA\*** y **A\*** son algoritmos muy utiles para resolver problemas de busqueda en espacios de estados grandes, y con heuristicas bien diseñadas, se pueden resolver problemas que de otra forma serian imposibles de resolver. Ambos algoritmos tienen ventajas y desventajas, y se pueden complementar entre si. **IDA\*** es mas eficiente en memoria, pero puede quedarse explorando un arbol de busqueda muy grande si hay muchos estados duplicados. **A\*** es mas eficiente en tiempo, pero puede quedarse sin memoria si el arbol de busqueda es muy ancho.
+
+En el caso de problemas donde la busqueda con **A\*** no termina por falta de memoria, se puede usar **IDA\*** con un tiempo limite para la busqueda, y si el tiempo limite se alcanza, se puede aumentar el tiempo limite y volver a correr la busqueda. De esta forma se puede ir explorando el arbol de busqueda de forma incremental, y se puede ir registrando el progreso de la busqueda en cada corrida.
+
+En casos donde la memoria no era un problema, se pudo ver que **A\*** conseguia llegar a la misma solucion que **IDA\*** explorando muchos menos nodos. En general, para todas las pruebas que se realizaron se pudo ver que **A\*** exploraba muchos menos nodos que **IDA\***, y que en general, el tiempo que se tardaba en llegar a la solucion era mucho menor con **A\*** que con **IDA\***.
+
+Notamos lo importante que es tener una buena heuristica para resolver problemas de busqueda, y que en general, las heuristicas aditivas con PDBs son muy utiles para resolver problemas de busqueda en espacios de estados grandes. En general, se obtuvieron mejores resultados con las heuristicas aditivas con PDBs que con la heuristica de Manhattan, y se pudo ver que en general, mientras mas grande es el PDB que se usa, mejor es la heuristica que se obtiene. Esto es claro, porque es mas informacion la que se tiene para estimar el costo de llegar a la solucion. El caso trivial es donde se tiene un PDB que contiene todos los estados posibles, en este caso se tiene la mejor heuristica posible, que es la distancia real al estado objetivo. Esto se puede ver con las pruebas en **hanoi 4-12** con el pdb `completo.pdb`, donde se obtiene siempre la solucion directa, visitando siempre el minimo numero de nodos para la solucion.
