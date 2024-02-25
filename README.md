@@ -1,3 +1,4 @@
+# [Informe](INFORME.md)
 # Objetivo
 
 El objetivo del proyecto es aprender sobre el modelo de espacio de estados y sobre
